@@ -1,7 +1,7 @@
 import { generateRobotsTxt } from "@forge42/seo-tools/robots"
 
 import { createDomain } from "~/utils/http"
-import type { Route } from "./+types/robots[.]txt"
+import type { Route } from "./+types/robots.txt"
 
 export async function loader({ request, context }: Route.LoaderArgs) {
 	const { env } = context

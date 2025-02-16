@@ -1,13 +1,17 @@
 import { useTranslation } from "react-i18next"
 import type { MetaFunction } from "react-router"
 import { convertDateToUserTz } from "~/utils/dates"
-import type { Route } from "./+types/_index"
+import type { Route } from "./+types/index"
 
 export const meta: MetaFunction = () => {
 	return [{ title: "New Remix App" }, { name: "description", content: "Welcome to Remix!" }]
 }
 
-export const loader = ({ request }: Route.LoaderArgs) => {
+type LoaderData = {
+	timezoneDate: string
+}
+
+export const loader = ({ request }: Route.LoaderArgs): LoaderData => {
 	const timezoneDate = convertDateToUserTz(new Date(), request)
 	return {
 		timezoneDate: timezoneDate.toTimeString(),
